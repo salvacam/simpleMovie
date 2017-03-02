@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/bootstrap.min.css">        
+        <link rel="stylesheet" href="./css/style.css">
+    </head>
+    <body>        
+        <div class="container">
+            <h2>Simple Movie</h2>        
+            <ul id="list-directors" class="list-group"></ul>
+            <div id="main-director"></div>
+        </div>
+        
+        <script src="./js/jquery-3.1.1.min.js"></script>
+        <script src="./js/underscore-min.js"></script>
+        <script src="./js/backbone-min.js"></script>
+        
+        
+        <script type="text/template" id="directorTemplate">
+            <a href='/director/new'>New Directors</a>
+            <a class="back" href='/'>All Directors</a>
+            <div class="jumbotron">
+                <h3><%= name %></h3>
+                <%= nationality %>
+            </div>
+        </script>
+        
+        <script type="text/template" id="directorFormTemplate">
+            <a href="/">All Posts</a><br />
+            <input type="text" id="directorName" placeholder="director name" maxlength="100"/>
+            <br />
+            <input type="text" id="directorNationality" placeholder="director nationality" maxlength="50"/>
+            <br />
+            <button id="submitDirector"> Add </button>
+        </script>
+        
+        <script type="text/template" id="movieView">
+            <hr/>
+            <p><strong><%= movie %></strong> film on: <%= year %> </p>
+        </script>
+        
+        <script type="text/template" id="movieFormView">
+            <input type="text" id="movieName" placeholder="movie" maxlength="50"/><br />            
+            <input type="number" id="movieYear" placeholder="year" min="1900" max="2150" /><br />
+            <button id="submitMovie"> Add </button>
+        </script>
+        
+        <script src="./js/app.js"></script>
+    </body>
+</html>
