@@ -1,0 +1,28 @@
+{
+  "name": "simplemovie",
+  "version": "1.0.0",
+  "description": "example of Backbone.js",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salvacam/simpleMovie.git"
+  },
+  "author": "salvacam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/salvacam/simpleMovie/issues"
+  },
+  "homepage": "https://github.com/salvacam/simpleMovie#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-gh-pages": "^0.5.4",
+    "gulp-html-replace": "^1.6.2",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-uglify": "^2.0.1",
+    "gulp-util": "^3.0.8"
+  }
+}
