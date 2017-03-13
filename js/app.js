@@ -17,6 +17,12 @@ var Directors = Backbone.Collection.extend({
         $.post(URLBACK, data, function(result){            
             that.reset(result);
             postRouter.navigate("/", { trigger: true });
+        }).fail(function() {    
+            $('#errorPost').removeClass('hide');
+            postRouter.navigate("/", { trigger: true });
+            setTimeout(function(){
+                $('#errorPost').addClass('hide');
+            },5000);
         });
     }
 });
@@ -105,6 +111,19 @@ var Movies = Backbone.Collection.extend({
     },
     url: function () {
         return this.director.url();
+    },        
+    create: function(movieAttrs){
+        var movie = new Movie(movieAttrs);
+        var data = JSON.stringify({directorId: movie.get('directorId'), movie: movie.get('movie'), year: movie.get('year')});        
+        var that = this;       
+        $.post(that.director.url(), data, function(result){            
+            that.add(movie);
+        }).fail(function() {    
+            $('#errorPost').removeClass('hide');
+            setTimeout(function(){
+                $('#errorPost').addClass('hide');
+            },5000);
+        });
     }
 });
 
@@ -133,7 +152,8 @@ var MoviesView = Backbone.View.extend({
         
         this.director.movies.fetch({
             reset: true,                
-            success: renderMovies
+            success: renderMovies,
+            error: errorMovies
         });       
         
         var that = this;
@@ -143,6 +163,15 @@ var MoviesView = Backbone.View.extend({
                     model: movie
                 }).render().el);
             });
+        }
+        function errorMovies(){            
+            $('#errorDirector').removeClass('hide');
+            $('#main-director').addClass('hide');
+            setTimeout(function(){
+                $('#errorDirector').addClass('hide');
+                $('#main-director').removeClass('hide');
+                postRouter.navigate("/", { trigger: true });
+            },3000);
         }
         this.$el.append(new MovieFormView({
             director: this.director
@@ -216,7 +245,10 @@ $.get(URLBACK, function(data, status){
     postRouter = new PostRouter({
         directors: new Directors(data)//,
         //listElement: $('#list-directors')
-    });
-    
+    });    
+    $('#spinnerDiv').addClass('hide');
     Backbone.history.start({root: "/simpleMovie/"});
+}).fail(function() {    
+    $('#spinnerDiv').addClass('hide');
+    $('#error').removeClass('hide');
 });

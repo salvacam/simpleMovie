@@ -16,11 +16,23 @@ and open the template in the editor.
         <!-- endbuild -->
     </head>
     <body>        
-        <a href="https://github.com/salvacam/simpleMovie"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+        
+        <a id="fork" href="https://github.com/salvacam/simpleMovie"><img style="z-index: 1; position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
         <div class="container">
-            <h2>Simple Movie</h2>        
+            <h2>Simple Movie</h2> 
+
+            <div class="spinner" id="spinnerDiv"></div>
             <ul id="list-directors" class="list-group"></ul>
             <div id="main-director"></div>
+            <div class="alert alert-danger hide" id="error">
+                <strong>Error</strong> al obtener los datos, recarge la aplicación.
+            </div>
+            <div class="alert alert-danger hide" id="errorDirector">
+                <strong>Error</strong> al obtener los datos, se redirigirá automáticamente a la pantalla de inicio.
+            </div>
+            <div class="alert alert-danger hide" id="errorPost">
+                <strong>Error</strong> al insertar los datos.
+            </div>
         </div>
         
         <script type="text/template" id="directorTemplate">
