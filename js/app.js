@@ -1,5 +1,5 @@
 /*global _: false, Backbone: false */
-var URLBACK = "https://featherbrained-exec.000webhostapp.com/simpleMovieBack/";
+var URLBACK = "https://calcicolous-moonlig.000webhostapp.com/simpleMovieBack/";
 
 var Director = Backbone.Model.extend({        
     initialize: function () {
